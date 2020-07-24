@@ -4,10 +4,10 @@ from json import load, dump
 
 
 def filter_function(tarinfo):
-    print(tarinfo.name)
-    if tarinfo.name == "Archives":
+    if tarinfo.name == "./Archives":
         return None
     else:
+        print(tarinfo.name)
         return tarinfo
 
 
