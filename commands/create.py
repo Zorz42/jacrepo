@@ -22,6 +22,9 @@ def create(package_name):
     with open("newestjaclangversion.txt") as newest_version:
         newestjaclangversion = [line.split(" ")[2] for line in newest_version.read().split("\n")
                                 if len(line.split(" ")) == 3]
+        newestjaclangversion.pop()
+        for i in range(2):
+            newestjaclangversion[i] = newestjaclangversion[i][1:-1]
         print(newestjaclangversion)
     with open(package_name + "/Info.json", "w") as info_file:
-        dump(barebones_info, info_file)
+        dump(barebones_info, info_file, indent=4)
