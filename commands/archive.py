@@ -16,4 +16,4 @@ def archive(version):
         info_dict = load(info_file)
         info_dict["Version"] = version
         dump(info_dict, info_file, indent=4)
-    
+    compress(".", f"Archives/{version}.tar.gz")
