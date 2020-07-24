@@ -1,6 +1,7 @@
-from os import mkdir
+from os import mkdir, path
 from json import dump
 from wget import download
+
 
 def mkfile(file_path):
     with open(file_path, "w") as _:
@@ -8,17 +9,21 @@ def mkfile(file_path):
 
 
 def create(package_name):
+    if path.isdir(package_name):
+        print("")
     mkdir(package_name)
     mkdir(package_name + "/Sources")
     mkdir(package_name + "/Headers")
     mkfile(package_name + "/Headers/__main__.jlh")
+    mkdir(package_name + "/Versions")
     barebones_info = {
-        "Version": "1.0",
+        "Version": "pre-release",
         "Supported Version": "",
         "Dependencies": []
     }
 
-    download("https://raw.githubusercontent.com/Zorz42/jaclang/master/include/version.h", "newestjaclangversion.txt", bar=None)
+    download("https://raw.githubusercontent.com/Zorz42/jaclang/master/include/version.h", "newestjaclangversion.txt",
+             bar=None)
     with open("newestjaclangversion.txt") as newest_version:
         newestjaclangversion = [line.split(" ")[2] for line in newest_version.read().split("\n")
                                 if len(line.split(" ")) == 3]

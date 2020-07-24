@@ -1,5 +1,6 @@
 from sys import argv
 from commands.create import create
+from commands.archive import archive
 
 if len(argv) == 1:
     print("jacrepo help:")
@@ -16,7 +17,7 @@ elif argv[1] == "archive":
     if len(argv) == 2:
         print("Name a version")
         exit(1)
-    pass
+    archive(argv[2])
 else:
     print(f"Unknown argument: {argv[1]}")
     exit(1)
