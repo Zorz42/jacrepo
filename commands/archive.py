@@ -15,5 +15,7 @@ def archive(version):
     with open("Info.json", "r+") as info_file:
         info_dict = load(info_file)
         info_dict["Version"] = version
+        info_file.seek(0)
         dump(info_dict, info_file, indent=4)
+        info_file.truncate()
     compress(".", f"Archives/{version}.tar.gz")
