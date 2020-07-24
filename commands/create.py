@@ -25,6 +25,8 @@ def create(package_name):
         newestjaclangversion.pop()
         for i in range(2):
             newestjaclangversion[i] = newestjaclangversion[i][1:-1]
+        barebones_info["Supported Version"] = f"{newestjaclangversion[0]}.{newestjaclangversion[1]}"
         print(newestjaclangversion)
     with open(package_name + "/Info.json", "w") as info_file:
         dump(barebones_info, info_file, indent=4)
+        info_file.write('\n')
