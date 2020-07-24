@@ -12,7 +12,7 @@ def archive(version):
     if not path.isfile("Info.json"):
         print("Current directory is not a jaclang package!")
         exit(1)
-    with open("Info.json", "rw") as info_file:
+    with open("Info.json", "r+") as info_file:
         info_dict = load(info_file)
         info_dict["Version"] = version
         dump(info_dict, info_file, indent=4)
