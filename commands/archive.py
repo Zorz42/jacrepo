@@ -5,7 +5,7 @@ from json import load, dump
 
 def compress(input_dir, output_archive):
     with tarfile.open(output_archive, "w:gz") as tar:
-        tar.add(input_dir, arcname=path.basename(input_dir))
+        tar.add(input_dir)
 
 
 def archive(version):
