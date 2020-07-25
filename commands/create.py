@@ -17,6 +17,7 @@ def create(package_name):
     mkfile(package_name + "/Headers/__main__.jlh")
     mkdir(package_name + "/Versions")
     barebones_info = {
+        "Name": package_name,
         "Version": "pre-release",
         "Supported Version": "",
         "Dependencies": []
