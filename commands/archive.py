@@ -4,7 +4,7 @@ from json import load, dump
 
 
 def filter_function(tarinfo):
-    if tarinfo.name == "./Archives":
+    if tarinfo.name == "./Versions":
         return None
     else:
         print(tarinfo.name)
@@ -26,4 +26,4 @@ def archive(version):
         info_file.seek(0)
         dump(info_dict, info_file, indent=4)
         info_file.truncate()
-    compress(".", f"Archives/{version}.tar.gz")
+    compress(".", f"Versions/{version}.tar.gz")
