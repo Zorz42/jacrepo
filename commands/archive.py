@@ -1,13 +1,15 @@
 import tarfile
 from os import path
 from json import load, dump
+from shutil import copyfile
+
+ignored_files = ("./Versions", "./Latest.json")
 
 
 def filter_function(tarinfo):
-    if tarinfo.name == "./Versions":
+    if tarinfo.name in ignored_files:
         return None
     else:
-        print(tarinfo.name)
         return tarinfo
 
 
@@ -27,3 +29,5 @@ def archive(version):
         dump(info_dict, info_file, indent=4)
         info_file.truncate()
     compress(".", f"Versions/{version}.tar.gz")
+    copyfile("Info.json", "Latest.json")
+    print(f"Archived to version {version}!")
